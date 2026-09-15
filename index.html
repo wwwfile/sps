@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saad Public School | Quality Education for a Bright Future</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts (English & Urdu) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Noto Nastaliq Urdu', sans-serif;
         }
 
         :root {
@@ -28,6 +28,14 @@
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* اردو موڈ کے لیے خصوصی اسٹائل */
+        body.lang-ur {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Poppins', sans-serif;
         }
 
         /* Navigation Header */
@@ -50,11 +58,42 @@
             position: relative;
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .logo {
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+        }
+
+        /* Language Switcher Buttons */
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+            background: #eee;
+            padding: 3px;
+            border-radius: 20px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 5px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary);
+            color: #ffffff;
         }
 
         nav ul {
@@ -100,7 +139,7 @@
         .hero h1 {
             font-size: 36px;
             margin-bottom: 15px;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .hero p {
@@ -134,6 +173,11 @@
             gap: 30px;
             padding: 30px;
             border-left: 5px solid var(--primary);
+        }
+
+        body.lang-ur .principal-box {
+            border-left: none;
+            border-right: 5px solid var(--primary);
         }
 
         .principal-img-container {
@@ -173,7 +217,7 @@
         .principal-content p {
             color: #444;
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 12px;
         }
 
@@ -184,6 +228,13 @@
             padding-left: 12px;
             margin-top: 15px;
             font-size: 14px;
+        }
+
+        body.lang-ur .principal-quote {
+            border-left: none;
+            border-right: 3px solid var(--secondary);
+            padding-left: 0;
+            padding-right: 12px;
         }
 
         /* Grid Cards */
@@ -200,6 +251,10 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             border-top: 4px solid var(--primary);
             text-align: left;
+        }
+
+        body.lang-ur .card {
+            text-align: right;
         }
 
         .card h3 {
@@ -228,7 +283,7 @@
             font-size: 15px;
             color: #444;
             margin: 10px 0;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* Footer */
@@ -282,6 +337,12 @@
                 text-align: center;
                 padding: 25px 15px;
                 border-left: none;
+                border-right: none;
+                border-top: 5px solid var(--primary);
+            }
+
+            body.lang-ur .principal-box {
+                border-right: none;
                 border-top: 5px solid var(--primary);
             }
 
@@ -289,21 +350,41 @@
                 text-align: center;
             }
 
+            body.lang-ur .principal-content {
+                text-align: center;
+            }
+
             .principal-quote {
                 border-left: none;
+                border-right: none;
                 border-top: 2px solid var(--secondary);
                 padding-top: 10px;
                 padding-left: 0;
+                padding-right: 0;
+            }
+
+            body.lang-ur .principal-quote {
+                border-right: none;
+                border-top: 2px solid var(--secondary);
+                padding-top: 10px;
+                padding-right: 0;
             }
         }
     </style>
 </head>
-<body>
+<body id="body">
 
     <!-- Header Navigation -->
     <header>
         <nav>
-            <a href="#" class="logo">Saad Public School</a>
+            <div class="nav-left">
+                <a href="#" class="logo" id="site-logo">Saad Public School</a>
+                <!-- Language Buttons -->
+                <div class="lang-switch">
+                    <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
+                    <button class="lang-btn" id="btn-ur" onclick="setLanguage('ur')">اردو</button>
+                </div>
+            </div>
             
             <div class="menu-toggle" id="mobile-menu">
                 <span></span>
@@ -312,43 +393,42 @@
             </div>
 
             <ul id="nav-list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#principal">Principal's Message</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" id="nav-home">Home</a></li>
+                <li><a href="#principal" id="nav-principal">Principal's Message</a></li>
+                <li><a href="#about" id="nav-about">About</a></li>
+                <li><a href="#academics" id="nav-academics">Academics</a></li>
+                <li><a href="#contact" id="nav-contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Welcome to Saad Public School</h1>
-        <p>Empowering young minds through quality education, character building, and academic excellence.</p>
+        <h1 id="hero-title">Welcome to Saad Public School</h1>
+        <p id="hero-subtitle">Empowering young minds through quality education, character building, and academic excellence.</p>
     </section>
 
     <!-- Principal's Message Section -->
     <div class="container" id="principal">
-        <h2 class="section-title">Message from the Principal</h2>
+        <h2 class="section-title" id="title-principal">Message from the Principal</h2>
         <div class="principal-box">
             <div class="principal-img-container">
-                <!-- آپ کی تصویر کو ہوسٹ کر کے منسلک کر دیا گیا ہے -->
                 <img src="principal.jpg" 
                      alt="Principal Saad Public School" 
                      class="principal-img"
-                     onerror="this.src='principal.jpg'">
-                <div class="principal-name">Principal</div>
-                <div class="principal-title">Saad Public School</div>
+                     onerror="this.src='https://i.ibb.co/vzV2t7V/principal.jpg'">
+                <div class="principal-name" id="p-name">Principal</div>
+                <div class="principal-title" id="p-role">Saad Public School</div>
             </div>
             <div class="principal-content">
-                <h3>"Nurturing Tomorrow's Leaders Today"</h3>
-                <p>
+                <h3 id="p-heading">"Nurturing Tomorrow's Leaders Today"</h3>
+                <p id="p-msg-1">
                     Welcome to Saad Public School. We believe that true education goes beyond textbooks—it is about inspiring curiosity, instilling core values, and equipping students with the confidence to thrive in an ever-changing world.
                 </p>
-                <p>
+                <p id="p-msg-2">
                     Our dedicated team of educators is passionate about providing an inclusive, supportive, and stimulating environment where every child is encouraged to discover their talents and strive for academic distinction.
                 </p>
-                <div class="principal-quote">
+                <div class="principal-quote" id="p-quote">
                     "Our goal is not just to teach children how to succeed academically, but to mold them into responsible, compassionate, and visionary human beings."
                 </div>
             </div>
@@ -357,59 +437,197 @@
 
     <!-- Features Section -->
     <div class="container" id="about">
-        <h2 class="section-title">Why Choose Us</h2>
+        <h2 class="section-title" id="title-about">Why Choose Us</h2>
         <div class="cards-grid">
             <div class="card">
-                <h3>Experienced Faculty</h3>
-                <p>Dedicated and qualified teachers committed to nurturing every student's unique potential and talents.</p>
+                <h3 id="feat-1-h">Experienced Faculty</h3>
+                <p id="feat-1-p">Dedicated and qualified teachers committed to nurturing every student's unique potential and talents.</p>
             </div>
             <div class="card">
-                <h3>Modern Computer & Science Lab</h3>
-                <p>Equipped with modern technology and science equipment for interactive, practical learning.</p>
+                <h3 id="feat-2-h">Modern Computer & Science Lab</h3>
+                <p id="feat-2-p">Equipped with modern technology and science equipment for interactive, practical learning.</p>
             </div>
             <div class="card">
-                <h3>Character & Moral Development</h3>
-                <p>Focusing on ethical values, discipline, and sportsmanship alongside standard academic curricula.</p>
+                <h3 id="feat-3-h">Character & Moral Development</h3>
+                <p id="feat-3-p">Focusing on ethical values, discipline, and sportsmanship alongside standard academic curricula.</p>
             </div>
         </div>
     </div>
 
     <!-- Academics Section -->
     <div class="container" id="academics">
-        <h2 class="section-title">Academic Wings</h2>
+        <h2 class="section-title" id="title-academics">Academic Wings</h2>
         <div class="cards-grid">
             <div class="card">
-                <h3>Primary Wing</h3>
-                <p>Playgroup to Grade 5: Activity-based learning fostering curiosity, communication, and foundational skills.</p>
+                <h3 id="acad-1-h">Primary Wing</h3>
+                <p id="acad-1-p">Playgroup to Grade 5: Activity-based learning fostering curiosity, communication, and foundational skills.</p>
             </div>
             <div class="card">
-                <h3>Middle Wing</h3>
-                <p>Grade 6 to Grade 8: Analytical thinking, core subject mastery, and collaborative project-based assignments.</p>
+                <h3 id="acad-2-h">Middle Wing</h3>
+                <p id="acad-2-p">Grade 6 to Grade 8: Analytical thinking, core subject mastery, and collaborative project-based assignments.</p>
             </div>
             <div class="card">
-                <h3>Secondary Wing (Matric)</h3>
-                <p>Grade 9 & 10: Focused exam preparation, board syllabus coverage, and rigorous mentorship for top results.</p>
+                <h3 id="acad-3-h">Secondary Wing (Matric)</h3>
+                <p id="acad-3-p">Grade 9 & 10: Focused exam preparation, board syllabus coverage, and rigorous mentorship for top results.</p>
             </div>
         </div>
     </div>
 
     <!-- Contact Info Section -->
     <div class="container" id="contact">
-        <h2 class="section-title">Contact Information</h2>
+        <h2 class="section-title" id="title-contact">Contact Information</h2>
         <div class="contact-info">
-            <p><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
-            <p><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
-            <p><strong>Email:</strong> info@saadpublicschool.com</p>
-            <p><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
+            <p id="c-address"><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
+            <p id="c-phone"><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
+            <p id="c-email"><strong>Email:</strong> info@saadpublicschool.com</p>
+            <p id="c-hours"><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Saad Public School. All rights reserved.</p>
+        <p id="footer-text">&copy; 2026 Saad Public School. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript (زبان تبدیل کرنے کا فنکشن اور مینو) -->
     <script>
+        const content = {
+            en: {
+                logo: "Saad Public School",
+                navHome: "Home",
+                navPrincipal: "Principal's Message",
+                navAbout: "About",
+                navAcademics: "Academics",
+                navContact: "Contact",
+                heroTitle: "Welcome to Saad Public School",
+                heroSubtitle: "Empowering young minds through quality education, character building, and academic excellence.",
+                titlePrincipal: "Message from the Principal",
+                pName: "Principal",
+                pRole: "Saad Public School",
+                pHeading: "\"Nurturing Tomorrow's Leaders Today\"",
+                pMsg1: "Welcome to Saad Public School. We believe that true education goes beyond textbooks—it is about inspiring curiosity, instilling core values, and equipping students with the confidence to thrive in an ever-changing world.",
+                pMsg2: "Our dedicated team of educators is passionate about providing an inclusive, supportive, and stimulating environment where every child is encouraged to discover their talents and strive for academic distinction.",
+                pQuote: "\"Our goal is not just to teach children how to succeed academically, but to mold them into responsible, compassionate, and visionary human beings.\"",
+                titleAbout: "Why Choose Us",
+                feat1H: "Experienced Faculty",
+                feat1P: "Dedicated and qualified teachers committed to nurturing every student's unique potential and talents.",
+                feat2H: "Modern Computer & Science Lab",
+                feat2P: "Equipped with modern technology and science equipment for interactive, practical learning.",
+                feat3H: "Character & Moral Development",
+                feat3P: "Focusing on ethical values, discipline, and sportsmanship alongside standard academic curricula.",
+                titleAcademics: "Academic Wings",
+                acad1H: "Primary Wing",
+                acad1P: "Playgroup to Grade 5: Activity-based learning fostering curiosity, communication, and foundational skills.",
+                acad2H: "Middle Wing",
+                acad2P: "Grade 6 to Grade 8: Analytical thinking, core subject mastery, and collaborative project-based assignments.",
+                acad3H: "Secondary Wing (Matric)",
+                acad3P: "Grade 9 & 10: Focused exam preparation, board syllabus coverage, and rigorous mentorship for top results.",
+                titleContact: "Contact Information",
+                cAddress: "<strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.",
+                cPhone: "<strong>Phone / WhatsApp:</strong> +92 300 0000000",
+                cEmail: "<strong>Email:</strong> info@saadpublicschool.com",
+                cHours: "<strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)",
+                footerText: "&copy; 2026 Saad Public School. All rights reserved."
+            },
+            ur: {
+                logo: "سعد پبلک اسکول",
+                navHome: "ہوم",
+                navPrincipal: "پرنسپل کا پیغام",
+                navAbout: "ہمارے بارے میں",
+                navAcademics: "تعلیمی شعبہ جات",
+                navContact: "رابطہ",
+                heroTitle: "سعد پبلک اسکول میں خوش آمدید",
+                heroSubtitle: "معیاری تعلیم، کردار سازی اور روشن مستقبل کے لیے ایک بااعتماد تعلیمی ادارہ۔",
+                titlePrincipal: "پرنسپل کا پیغام",
+                pName: "پرنسپل",
+                pRole: "سعد پبلک اسکول",
+                pHeading: "”آج کے معمار، کل کے رہبر“",
+                pMsg1: "سعد پبلک اسکول میں خوش آمدید۔ ہمارا پختہ یقین ہے کہ حقیقی تعلیم صرف کتابی علم تک محدود نہیں، بلکہ طلباء میں اخلاقی اقدار، خود اعتمادی اور عملی صلاحیتوں کو اجاگر کرنے کا نام ہے۔",
+                pMsg2: "ہماری قابل اور تجربہ کار اساتذہ کی ٹیم ایک دوستانہ اور تعلیمی ماحول فراہم کرنے کے لیے ہمہ وقت کوشاں ہے، جہاں ہر بچے کو اس کی قدرتی صلاحیتوں کے مطابق نکھارا جاتا ہے۔",
+                pQuote: "”ہمارا مقصد نہ صرف بچوں کو امتحانات میں نمایاں کامیابی دلانا ہے، بلکہ انہیں ایک باکردار اور باصلاحیت انسان بنانا ہے۔“",
+                titleAbout: "ہماری خصوصیات",
+                feat1H: "تجربہ کار اساتذہ",
+                feat1P: "اعلیٰ تعلیم یافتہ اور تربیت یافتہ تدریسی عملہ جو بچوں کی انفرادی صلاحیتوں پر توجہ دیتا ہے۔",
+                feat2H: "جدید سائنس و کمپیوٹر لیب",
+                feat2P: "جدید دور کے تقاضوں کے مطابق کمپیوٹر لیب اور سائنسی پریکٹیکلز کے لیے مکمل سہولیات۔",
+                feat3H: "اخلاقی و اسلامی تربیت",
+                feat3P: "نصابی تعلیم کے ساتھ ساتھ اسلامی اقدار، نظم و ضبط اور کردار سازی پر خصوصی توجہ۔",
+                titleAcademics: "تعلیمی شعبہ جات",
+                acad1H: "پرائمری سیکشن",
+                acad1P: "پلے گروپ تا پنجم: سرگرمیوں پر مبنی بنیادی اور دوستانہ تعلیمی ماحول۔",
+                acad2H: "مڈل سیکشن",
+                acad2P: "ششم تا ہشتم: بنیادی تصورات کی مضبوطی اور تعلیمی صلاحیتوں کا نکھار۔",
+                acad3H: "سیکنڈری سیکشن (میٹرک)",
+                acad3P: "نہم و دہم: بورڈ کے امتحانات میں شاندار پوزیشن کے لیے خصوصی تیاری اور رہنمائی۔",
+                titleContact: "رابطے کی معلومات",
+                cAddress: "<strong>پتہ:</strong> شیخ محلہ، مواچھ گوٹھ نمبر 2، حب ریور روڈ، کیماڑی ٹاؤن، کراچی۔",
+                cPhone: "<strong>فون / واٹس ایپ:</strong> +92 300 0000000",
+                cEmail: "<strong>ای میل:</strong> info@saadpublicschool.com",
+                cHours: "<strong>اوقاتِ ملاقات:</strong> پیر تا ہفتہ (صبح 8:00 بجے تا دوپہر 2:00 بجے)",
+                footerText: "&copy; 2026 سعد پبلک اسکول۔ جملہ حقوق محفوظ ہیں۔"
+            }
+        };
+
+        function setLanguage(lang) {
+            const body = document.getElementById('body');
+            const btnEn = document.getElementById('btn-en');
+            const btnUr = document.getElementById('btn-ur');
+
+            if (lang === 'ur') {
+                body.classList.add('lang-ur');
+                btnUr.classList.add('active');
+                btnEn.classList.remove('active');
+            } else {
+                body.classList.remove('lang-ur');
+                btnEn.classList.add('active');
+                btnUr.classList.remove('active');
+            }
+
+            const data = content[lang];
+            document.getElementById('site-logo').innerText = data.logo;
+            document.getElementById('nav-home').innerText = data.navHome;
+            document.getElementById('nav-principal').innerText = data.navPrincipal;
+            document.getElementById('nav-about').innerText = data.navAbout;
+            document.getElementById('nav-academics').innerText = data.navAcademics;
+            document.getElementById('nav-contact').innerText = data.navContact;
+
+            document.getElementById('hero-title').innerText = data.heroTitle;
+            document.getElementById('hero-subtitle').innerText = data.heroSubtitle;
+
+            document.getElementById('title-principal').innerText = data.titlePrincipal;
+            document.getElementById('p-name').innerText = data.pName;
+            document.getElementById('p-role').innerText = data.pRole;
+            document.getElementById('p-heading').innerText = data.pHeading;
+            document.getElementById('p-msg-1').innerText = data.pMsg1;
+            document.getElementById('p-msg-2').innerText = data.pMsg2;
+            document.getElementById('p-quote').innerText = data.pQuote;
+
+            document.getElementById('title-about').innerText = data.titleAbout;
+            document.getElementById('feat-1-h').innerText = data.feat1H;
+            document.getElementById('feat-1-p').innerText = data.feat1P;
+            document.getElementById('feat-2-h').innerText = data.feat2H;
+            document.getElementById('feat-2-p').innerText = data.feat2P;
+            document.getElementById('feat-3-h').innerText = data.feat3H;
+            document.getElementById('feat-3-p').innerText = data.feat3P;
+
+            document.getElementById('title-academics').innerText = data.titleAcademics;
+            document.getElementById('acad-1-h').innerText = data.acad1H;
+            document.getElementById('acad-1-p').innerText = data.acad1P;
+            document.getElementById('acad-2-h').innerText = data.acad2H;
+            document.getElementById('acad-2-p').innerText = data.acad2P;
+            document.getElementById('acad-3-h').innerText = data.acad3H;
+            document.getElementById('acad-3-p').innerText = data.acad3P;
+
+            document.getElementById('title-contact').innerText = data.titleContact;
+            document.getElementById('c-address').innerHTML = data.cAddress;
+            document.getElementById('c-phone').innerHTML = data.cPhone;
+            document.getElementById('c-email').innerHTML = data.cEmail;
+            document.getElementById('c-hours').innerHTML = data.cHours;
+
+            document.getElementById('footer-text').innerHTML = data.footerText;
+        }
+
+        // Mobile Menu Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
