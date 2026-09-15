@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saad Public School | Quality Education for a Bright Future</title>
     
-    <!-- Google Fonts (English & Urdu) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- اصل نوری نستعلیق اور پوپنز فونٹس -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Noto Nastaliq Urdu', sans-serif;
         }
 
         :root {
@@ -21,6 +21,7 @@
             --secondary: #fbc02d;
             --dark: #212121;
             --light: #f8f9fa;
+            --whatsapp: #25d366;
         }
 
         body {
@@ -28,17 +29,64 @@
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.2s ease;
         }
 
-        /* اردو موڈ کے لیے خصوصی اسٹائل */
+        /* بالکل واٹس ایپ والا نستعلیق اردو فونٹ */
+        body.lang-ur,
+        body.lang-ur * {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif !important;
+        }
+
         body.lang-ur {
             direction: rtl;
             text-align: right;
-            font-family: 'Noto Nastaliq Urdu', 'Poppins', sans-serif;
         }
 
-        /* Navigation Header */
+        body.lang-ur h1, 
+        body.lang-ur h2, 
+        body.lang-ur h3 {
+            line-height: 2 !important;
+            letter-spacing: 0px !important;
+        }
+
+        body.lang-ur p, 
+        body.lang-ur a, 
+        body.lang-ur span, 
+        body.lang-ur button,
+        body.lang-ur marquee {
+            line-height: 2.3 !important;
+            font-size: 15px;
+        }
+
+        /* Notice Board Ticker */
+        .notice-bar {
+            background-color: var(--secondary);
+            color: #000;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .notice-label {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-right: 15px;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+
+        body.lang-ur .notice-label {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -71,7 +119,6 @@
             text-decoration: none;
         }
 
-        /* Language Switcher Buttons */
         .lang-switch {
             display: flex;
             gap: 5px;
@@ -83,7 +130,7 @@
         .lang-btn {
             background: transparent;
             border: none;
-            padding: 5px 12px;
+            padding: 4px 12px;
             font-size: 13px;
             font-weight: 600;
             border-radius: 15px;
@@ -128,7 +175,6 @@
             border-radius: 2px;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             color: #ffffff;
@@ -148,7 +194,6 @@
             margin: 0 auto;
         }
 
-        /* Content Container */
         .container {
             max-width: 1200px;
             margin: 50px auto;
@@ -163,7 +208,6 @@
             font-weight: 700;
         }
 
-        /* Principal Message Section */
         .principal-box {
             background: #ffffff;
             border-radius: 12px;
@@ -217,7 +261,6 @@
         .principal-content p {
             color: #444;
             font-size: 15px;
-            line-height: 1.8;
             margin-bottom: 12px;
         }
 
@@ -237,7 +280,6 @@
             padding-right: 12px;
         }
 
-        /* Grid Cards */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -268,25 +310,116 @@
             font-size: 14px;
         }
 
-        /* Contact Details Section */
-        .contact-info {
-            background-color: #ffffff;
-            padding: 30px 20px;
+        .achieve-card {
+            background: #ffffff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .achieve-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            max-width: 750px;
-            margin: 0 auto;
-            text-align: center;
+            font-style: italic;
+            position: relative;
+        }
+
+        .parent-info {
+            margin-top: 15px;
+            font-weight: 600;
+            font-style: normal;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .contact-info {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .contact-info p {
             font-size: 15px;
             color: #444;
-            margin: 10px 0;
-            line-height: 1.8;
+            margin: 12px 0;
         }
 
-        /* Footer */
+        .map-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .map-btn:hover {
+            background-color: #0b3c8a;
+        }
+
+        .map-box {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            min-height: 280px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            min-height: 280px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+            z-index: 1000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         footer {
             background-color: var(--dark);
             color: #ffffff;
@@ -296,7 +429,6 @@
             font-size: 14px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -320,66 +452,35 @@
                 display: flex;
             }
 
-            .hero {
-                padding: 70px 15px;
-            }
-
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            .hero p {
-                font-size: 14px;
+            .contact-layout {
+                grid-template-columns: 1fr;
             }
 
             .principal-box {
                 flex-direction: column;
                 text-align: center;
-                padding: 25px 15px;
                 border-left: none;
                 border-right: none;
                 border-top: 5px solid var(--primary);
-            }
-
-            body.lang-ur .principal-box {
-                border-right: none;
-                border-top: 5px solid var(--primary);
-            }
-
-            .principal-content {
-                text-align: center;
-            }
-
-            body.lang-ur .principal-content {
-                text-align: center;
-            }
-
-            .principal-quote {
-                border-left: none;
-                border-right: none;
-                border-top: 2px solid var(--secondary);
-                padding-top: 10px;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            body.lang-ur .principal-quote {
-                border-right: none;
-                border-top: 2px solid var(--secondary);
-                padding-top: 10px;
-                padding-right: 0;
             }
         }
     </style>
 </head>
 <body id="body">
 
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <span class="notice-label" id="lbl-notice">ANNOUNCEMENT</span>
+        <marquee behavior="scroll" direction="left" id="txt-marquee" onmouseover="this.stop();" onmouseout="this.start();">
+            Admissions open from Playgroup to Matriculation (Science & General) for the upcoming academic session! Visit the school office for prospectus.
+        </marquee>
+    </div>
+
     <!-- Header Navigation -->
     <header>
         <nav>
             <div class="nav-left">
                 <a href="#" class="logo" id="site-logo">Saad Public School</a>
-                <!-- Language Buttons -->
                 <div class="lang-switch">
                     <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
                     <button class="lang-btn" id="btn-ur" onclick="setLanguage('ur')">اردو</button>
@@ -397,6 +498,7 @@
                 <li><a href="#principal" id="nav-principal">Principal's Message</a></li>
                 <li><a href="#about" id="nav-about">About</a></li>
                 <li><a href="#academics" id="nav-academics">Academics</a></li>
+                <li><a href="#achieve" id="nav-achieve">Achievements</a></li>
                 <li><a href="#contact" id="nav-contact">Contact</a></li>
             </ul>
         </nav>
@@ -408,15 +510,14 @@
         <p id="hero-subtitle">Empowering young minds through quality education, character building, and academic excellence.</p>
     </section>
 
-    <!-- Principal's Message Section -->
+    <!-- Principal Section -->
     <div class="container" id="principal">
         <h2 class="section-title" id="title-principal">Message from the Principal</h2>
         <div class="principal-box">
             <div class="principal-img-container">
                 <img src="principal.jpg" 
                      alt="Principal Saad Public School" 
-                     class="principal-img"
-                     onerror="this.src='https://i.ibb.co/vzV2t7V/principal.jpg'">
+                     class="principal-img">
                 <div class="principal-name" id="p-name">Principal</div>
                 <div class="principal-title" id="p-role">Saad Public School</div>
             </div>
@@ -473,31 +574,85 @@
         </div>
     </div>
 
-    <!-- Contact Info Section -->
-    <div class="container" id="contact">
-        <h2 class="section-title" id="title-contact">Contact Information</h2>
-        <div class="contact-info">
-            <p id="c-address"><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
-            <p id="c-phone"><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
-            <p id="c-email"><strong>Email:</strong> info@saadpublicschool.com</p>
-            <p id="c-hours"><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
+    <!-- Achievements Section -->
+    <div class="container" id="achieve">
+        <h2 class="section-title" id="title-achieve">Our Top Achievers</h2>
+        <div class="cards-grid">
+            <div class="achieve-card">
+                <span class="achieve-badge" id="ach-1-badge">Matric Board - A1 Grade</span>
+                <h3 id="ach-1-name">Science Group</h3>
+                <p id="ach-1-text">Outstanding performance and highest marks secured in Karachi Board examinations.</p>
+            </div>
+            <div class="achieve-card">
+                <span class="achieve-badge" id="ach-2-badge">Middle Wing Topper</span>
+                <h3 id="ach-2-name">Grade 8 Distinction</h3>
+                <p id="ach-2-text">100% academic excellence and participation in national science quiz competitions.</p>
+            </div>
+            <div class="achieve-card">
+                <span class="achieve-badge" id="ach-3-badge">Annual Sports Gala</span>
+                <h3 id="ach-3-name">Sports Champions</h3>
+                <p id="ach-3-text">Winning trophies in inter-school cricket, football, and athletic championships.</p>
+            </div>
         </div>
     </div>
+
+    <!-- Testimonials Section -->
+    <div class="container">
+        <h2 class="section-title" id="title-reviews">What Parents Say</h2>
+        <div class="cards-grid">
+            <div class="testimonial-card">
+                <p id="rev-1-p">"Saad Public School provides a very secure and disciplined environment. My children have shown great improvement in studies and behavior."</p>
+                <div class="parent-info" id="rev-1-name">- Muhammad Tariq (Parent)</div>
+            </div>
+            <div class="testimonial-card">
+                <p id="rev-2-p">"The teachers give individual attention to each child. Best school in Kiamari Town area with affordable fee structure."</p>
+                <div class="parent-info" id="rev-2-name">- Abdul Rasheed (Parent)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location & Contact Section -->
+    <div class="container" id="contact">
+        <h2 class="section-title" id="title-contact">Location & Contact</h2>
+        <div class="contact-layout">
+            <div class="contact-info">
+                <p id="c-address"><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
+                <p id="c-phone"><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
+                <p id="c-email"><strong>Email:</strong> info@saadpublicschool.com</p>
+                <p id="c-hours"><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
+                <a href="https://maps.google.com/?q=24.919899,66.942614" target="_blank" class="map-btn" id="btn-map">
+                    <i class="fas fa-map-marked-alt"></i> Open in Google Maps
+                </a>
+            </div>
+            <div class="map-box">
+                <!-- درست لوکیشن میپ -->
+                <iframe src="https://maps.google.com/maps?q=24.919899,66.942614&hl=en&z=17&output=embed" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923000000000?text=Hello%20Saad%20Public%20School,%20I%20want%20to%20inquire%20about%20admissions." target="_blank" class="whatsapp-float" title="Chat with Us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Footer -->
     <footer>
         <p id="footer-text">&copy; 2026 Saad Public School. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript (زبان تبدیل کرنے کا فنکشن اور مینو) -->
+    <!-- Scripts -->
     <script>
         const content = {
             en: {
                 logo: "Saad Public School",
+                lblNotice: "ANNOUNCEMENT",
+                txtMarquee: "Admissions open from Playgroup to Matriculation (Science & General) for the upcoming academic session! Visit the school office for prospectus.",
                 navHome: "Home",
                 navPrincipal: "Principal's Message",
                 navAbout: "About",
                 navAcademics: "Academics",
+                navAchieve: "Achievements",
                 navContact: "Contact",
                 heroTitle: "Welcome to Saad Public School",
                 heroSubtitle: "Empowering young minds through quality education, character building, and academic excellence.",
@@ -522,19 +677,38 @@
                 acad2P: "Grade 6 to Grade 8: Analytical thinking, core subject mastery, and collaborative project-based assignments.",
                 acad3H: "Secondary Wing (Matric)",
                 acad3P: "Grade 9 & 10: Focused exam preparation, board syllabus coverage, and rigorous mentorship for top results.",
-                titleContact: "Contact Information",
+                titleAchieve: "Our Top Achievers",
+                ach1Badge: "Matric Board - A1 Grade",
+                ach1Name: "Science Group",
+                ach1Text: "Outstanding performance and highest marks secured in Karachi Board examinations.",
+                ach2Badge: "Middle Wing Topper",
+                ach2Name: "Grade 8 Distinction",
+                ach2Text: "100% academic excellence and participation in national science quiz competitions.",
+                ach3Badge: "Annual Sports Gala",
+                ach3Name: "Sports Champions",
+                ach3Text: "Winning trophies in inter-school cricket, football, and athletic championships.",
+                titleReviews: "What Parents Say",
+                rev1P: "\"Saad Public School provides a very secure and disciplined environment. My children have shown great improvement in studies and behavior.\"",
+                rev1Name: "- Muhammad Tariq (Parent)",
+                rev2P: "\"The teachers give individual attention to each child. Best school in Kiamari Town area with affordable fee structure.\"",
+                rev2Name: "- Abdul Rasheed (Parent)",
+                titleContact: "Location & Contact",
                 cAddress: "<strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.",
                 cPhone: "<strong>Phone / WhatsApp:</strong> +92 300 0000000",
                 cEmail: "<strong>Email:</strong> info@saadpublicschool.com",
                 cHours: "<strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)",
+                btnMap: '<i class="fas fa-map-marked-alt"></i> Open in Google Maps',
                 footerText: "&copy; 2026 Saad Public School. All rights reserved."
             },
             ur: {
                 logo: "سعد پبلک اسکول",
+                lblNotice: "اہم اعلان",
+                txtMarquee: "نئے تعلیمی سال کے لیے پلے گروپ تا میٹرک (سائنس و جنرل) داخلے جاری ہیں! پراسپیکٹس کے لیے اسکول آفس تشریف لائیں۔",
                 navHome: "ہوم",
                 navPrincipal: "پرنسپل کا پیغام",
                 navAbout: "ہمارے بارے میں",
                 navAcademics: "تعلیمی شعبہ جات",
+                navAchieve: "نمایاں کامیابیاں",
                 navContact: "رابطہ",
                 heroTitle: "سعد پبلک اسکول میں خوش آمدید",
                 heroSubtitle: "معیاری تعلیم، کردار سازی اور روشن مستقبل کے لیے ایک بااعتماد تعلیمی ادارہ۔",
@@ -559,11 +733,27 @@
                 acad2P: "ششم تا ہشتم: بنیادی تصورات کی مضبوطی اور تعلیمی صلاحیتوں کا نکھار۔",
                 acad3H: "سیکنڈری سیکشن (میٹرک)",
                 acad3P: "نہم و دہم: بورڈ کے امتحانات میں شاندار پوزیشن کے لیے خصوصی تیاری اور رہنمائی۔",
-                titleContact: "رابطے کی معلومات",
+                titleAchieve: "ہمارے ہونہار طلباء",
+                ach1Badge: "میٹرک بورڈ - اے ون گریڈ",
+                ach1Name: "سائنس گروپ",
+                ach1Text: "کراچی بورڈ کے امتحانات میں شاندار کارکردگی اور بہترین نمبرات کا حصول۔",
+                ach2Badge: "مڈل سیکشن پوزیشن",
+                ach2Name: "کلاس ہشتم اعزاز",
+                ach2Text: "سو فیصد شاندار تعلیمی نتائج اور سائنس کوئز مقابلوں میں شرکت۔",
+                ach3Badge: "اسپورٹس گالا",
+                ach3Name: "کھیلوں کے فاتح",
+                ach3Text: "کرکٹ، فٹ بال اور ایتھلیٹکس مقابلوں میں اسکول کی شاندار فتوحات۔",
+                titleReviews: "والدین کی رائے",
+                rev1P: "”سعد پبلک اسکول ایک انتہائی محفوظ اور منظم اسکول ہے۔ میرے بچوں کی پڑھائی اور اخلاق میں بہت مثبت تبدیلی آئی ہے۔“",
+                rev1Name: "- محمد طارق (والد)",
+                rev2P: "”اساتذہ ہر بچے پر الگ سے محنت کرتے ہیں۔ کیماڑی ٹاؤن کے علاقے میں مناسب فیس کے ساتھ بہترین اسکول ہے۔“",
+                rev2Name: "- عبد الرشید (والد)",
+                titleContact: "لوکیشن اور رابطہ",
                 cAddress: "<strong>پتہ:</strong> شیخ محلہ، مواچھ گوٹھ نمبر 2، حب ریور روڈ، کیماڑی ٹاؤن، کراچی۔",
                 cPhone: "<strong>فون / واٹس ایپ:</strong> +92 300 0000000",
                 cEmail: "<strong>ای میل:</strong> info@saadpublicschool.com",
                 cHours: "<strong>اوقاتِ ملاقات:</strong> پیر تا ہفتہ (صبح 8:00 بجے تا دوپہر 2:00 بجے)",
+                btnMap: '<i class="fas fa-map-marked-alt"></i> گوگل میپس پر دیکھیں',
                 footerText: "&copy; 2026 سعد پبلک اسکول۔ جملہ حقوق محفوظ ہیں۔"
             }
         };
@@ -572,23 +762,30 @@
             const body = document.getElementById('body');
             const btnEn = document.getElementById('btn-en');
             const btnUr = document.getElementById('btn-ur');
+            const marquee = document.getElementById('txt-marquee');
 
             if (lang === 'ur') {
                 body.classList.add('lang-ur');
                 btnUr.classList.add('active');
                 btnEn.classList.remove('active');
+                marquee.setAttribute('direction', 'right');
             } else {
                 body.classList.remove('lang-ur');
                 btnEn.classList.add('active');
                 btnUr.classList.remove('active');
+                marquee.setAttribute('direction', 'left');
             }
 
             const data = content[lang];
             document.getElementById('site-logo').innerText = data.logo;
+            document.getElementById('lbl-notice').innerText = data.lblNotice;
+            document.getElementById('txt-marquee').innerText = data.txtMarquee;
+            
             document.getElementById('nav-home').innerText = data.navHome;
             document.getElementById('nav-principal').innerText = data.navPrincipal;
             document.getElementById('nav-about').innerText = data.navAbout;
             document.getElementById('nav-academics').innerText = data.navAcademics;
+            document.getElementById('nav-achieve').innerText = data.navAchieve;
             document.getElementById('nav-contact').innerText = data.navContact;
 
             document.getElementById('hero-title').innerText = data.heroTitle;
@@ -618,16 +815,33 @@
             document.getElementById('acad-3-h').innerText = data.acad3H;
             document.getElementById('acad-3-p').innerText = data.acad3P;
 
+            document.getElementById('title-achieve').innerText = data.titleAchieve;
+            document.getElementById('ach-1-badge').innerText = data.ach1Badge;
+            document.getElementById('ach-1-name').innerText = data.ach1Name;
+            document.getElementById('ach-1-text').innerText = data.ach1Text;
+            document.getElementById('ach-2-badge').innerText = data.ach2Badge;
+            document.getElementById('ach-2-name').innerText = data.ach2Name;
+            document.getElementById('ach-2-text').innerText = data.ach2Text;
+            document.getElementById('ach-3-badge').innerText = data.ach3Badge;
+            document.getElementById('ach-3-name').innerText = data.ach3Name;
+            document.getElementById('ach-3-text').innerText = data.ach3Text;
+
+            document.getElementById('title-reviews').innerText = data.titleReviews;
+            document.getElementById('rev-1-p').innerText = data.rev1P;
+            document.getElementById('rev-1-name').innerText = data.rev1Name;
+            document.getElementById('rev-2-p').innerText = data.rev2P;
+            document.getElementById('rev-2-name').innerText = data.rev2Name;
+
             document.getElementById('title-contact').innerText = data.titleContact;
             document.getElementById('c-address').innerHTML = data.cAddress;
             document.getElementById('c-phone').innerHTML = data.cPhone;
             document.getElementById('c-email').innerHTML = data.cEmail;
             document.getElementById('c-hours').innerHTML = data.cHours;
+            document.getElementById('btn-map').innerHTML = data.btnMap;
 
             document.getElementById('footer-text').innerHTML = data.footerText;
         }
 
-        // Mobile Menu Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
