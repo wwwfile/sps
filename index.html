@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saad Public School | Quality Education for a Bright Future</title>
     
-    <!-- بالکل اسکرین شاٹ والا Noto Sans Arabic فونٹ اور Poppins -->
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -33,7 +33,7 @@
             transition: all 0.2s ease;
         }
 
-        /* اسکرین شاٹ والا سیدھا، پرفیکٹ اور پکا فونٹ */
+        /* Noto Sans Arabic Font for Urdu */
         body.lang-ur,
         body.lang-ur h1, 
         body.lang-ur h2, 
@@ -108,7 +108,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 12px 20px;
             position: relative;
         }
 
@@ -116,13 +116,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
         }
 
         .lang-switch {
@@ -403,7 +396,6 @@
             min-height: 280px;
         }
 
-        /* مستقل اور محفوظ واٹس ایپ بٹن (SVG آئیکن) */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -488,11 +480,10 @@
         </marquee>
     </div>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation (بدون اسکول نام) -->
     <header>
         <nav>
             <div class="nav-left">
-                <a href="#" class="logo" id="site-logo">Saad Public School</a>
                 <div class="lang-switch">
                     <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
                     <button class="lang-btn" id="btn-ur" onclick="setLanguage('ur')">اردو</button>
@@ -642,7 +633,7 @@
         </div>
     </div>
 
-    <!-- Permanent WhatsApp Floating Button -->
+    <!-- WhatsApp Button -->
     <a href="https://wa.me/923132596296?text=Hello%20Saad%20Public%20School,%20I%20want%20to%20inquire%20about%20admissions." target="_blank" class="whatsapp-float" title="Chat with Us on WhatsApp">
         <svg viewBox="0 0 24 24">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.969.541 1.942.825 2.806.825h.005c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.586-5.767-5.773-5.767zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.115-.527-1.708-.707-2.828-2.456-2.913-2.57-.085-.114-.689-.918-.689-1.751 0-.833.435-1.243.59-1.411.155-.168.337-.21.45-.21.112 0 .225.001.323.006.103.005.241-.039.378.291.144.344.489 1.192.531 1.278.043.085.071.185.014.298-.057.113-.086.184-.171.284-.085.1-.179.223-.256.299-.085.085-.174.177-.075.347.099.171.44 1.764 1.341 2.37.388.261.698.344.87.422.172.078.273.067.375-.05.103-.118.44-.513.558-.688.118-.175.236-.146.396-.086s1.025.483 1.202.571c.177.088.295.132.339.206.044.074.044.43-.1 1.835zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.398C8.423 21.503 10.158 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
@@ -658,7 +649,6 @@
     <script>
         const content = {
             en: {
-                logo: "Saad Public School",
                 lblNotice: "ANNOUNCEMENT",
                 txtMarquee: "Admissions open from Playgroup to Matriculation (Science & General) for the upcoming academic session! Visit the school office for prospectus.",
                 navHome: "Home",
@@ -714,7 +704,6 @@
                 footerText: "&copy; 2026 Saad Public School. All rights reserved."
             },
             ur: {
-                logo: "سعد پبلک اسکول",
                 lblNotice: "اہم اعلان",
                 txtMarquee: "نئے تعلیمی سال کے لیے پلے گروپ تا میٹرک (سائنس و جنرل) داخلے جاری ہیں! پراسپیکٹس کے لیے اسکول آفس تشریف لائیں۔",
                 navHome: "ہوم",
@@ -790,7 +779,6 @@
             }
 
             const data = content[lang];
-            document.getElementById('site-logo').innerText = data.logo;
             document.getElementById('lbl-notice').innerText = data.lblNotice;
             document.getElementById('txt-marquee').innerText = data.txtMarquee;
             
