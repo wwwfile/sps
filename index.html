@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saad Public School | Quality Education for a Bright Future</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0d47a1;
+            --secondary: #fbc02d;
+            --dark: #212121;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 16px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Principal Message Section */
+        .principal-box {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .principal-img-container {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .principal-img {
+            width: 190px;
+            height: 235px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            border: 3px solid #e0e0e0;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .principal-name {
+            margin-top: 10px;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .principal-title {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .principal-content h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .principal-content p {
+            color: #444;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .principal-quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid var(--secondary);
+            padding-left: 12px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Grid Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            text-align: left;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #555555;
+            font-size: 14px;
+        }
+
+        /* Contact Details Section */
+        .contact-info {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            color: #444;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero {
+                padding: 70px 15px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .principal-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 15px;
+                border-left: none;
+                border-top: 5px solid var(--primary);
+            }
+
+            .principal-content {
+                text-align: center;
+            }
+
+            .principal-quote {
+                border-left: none;
+                border-top: 2px solid var(--secondary);
+                padding-top: 10px;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Saad Public School</a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#principal">Principal's Message</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Saad Public School</h1>
+        <p>Empowering young minds through quality education, character building, and academic excellence.</p>
+    </section>
+
+    <!-- Principal's Message Section -->
+    <div class="container" id="principal">
+        <h2 class="section-title">Message from the Principal</h2>
+        <div class="principal-box">
+            <div class="principal-img-container">
+                <!-- آپ کی تصویر کو ہوسٹ کر کے منسلک کر دیا گیا ہے -->
+                <img src="principal.jpg" 
+                     alt="Principal Saad Public School" 
+                     class="principal-img"
+                     onerror="this.src='principal.jpg'">
+                <div class="principal-name">Principal</div>
+                <div class="principal-title">Saad Public School</div>
+            </div>
+            <div class="principal-content">
+                <h3>"Nurturing Tomorrow's Leaders Today"</h3>
+                <p>
+                    Welcome to Saad Public School. We believe that true education goes beyond textbooks—it is about inspiring curiosity, instilling core values, and equipping students with the confidence to thrive in an ever-changing world.
+                </p>
+                <p>
+                    Our dedicated team of educators is passionate about providing an inclusive, supportive, and stimulating environment where every child is encouraged to discover their talents and strive for academic distinction.
+                </p>
+                <div class="principal-quote">
+                    "Our goal is not just to teach children how to succeed academically, but to mold them into responsible, compassionate, and visionary human beings."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container" id="about">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Experienced Faculty</h3>
+                <p>Dedicated and qualified teachers committed to nurturing every student's unique potential and talents.</p>
+            </div>
+            <div class="card">
+                <h3>Modern Computer & Science Lab</h3>
+                <p>Equipped with modern technology and science equipment for interactive, practical learning.</p>
+            </div>
+            <div class="card">
+                <h3>Character & Moral Development</h3>
+                <p>Focusing on ethical values, discipline, and sportsmanship alongside standard academic curricula.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academics Section -->
+    <div class="container" id="academics">
+        <h2 class="section-title">Academic Wings</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Primary Wing</h3>
+                <p>Playgroup to Grade 5: Activity-based learning fostering curiosity, communication, and foundational skills.</p>
+            </div>
+            <div class="card">
+                <h3>Middle Wing</h3>
+                <p>Grade 6 to Grade 8: Analytical thinking, core subject mastery, and collaborative project-based assignments.</p>
+            </div>
+            <div class="card">
+                <h3>Secondary Wing (Matric)</h3>
+                <p>Grade 9 & 10: Focused exam preparation, board syllabus coverage, and rigorous mentorship for top results.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="container" id="contact">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-info">
+            <p><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
+            <p><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
+            <p><strong>Email:</strong> info@saadpublicschool.com</p>
+            <p><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Saad Public School. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-list a').forEach(item => {
+            item.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
