@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saad Public School | Quality Education for a Bright Future</title>
     
-    <!-- اصل نوری نستعلیق اور پوپنز فونٹس -->
+    <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -33,31 +33,35 @@
             transition: all 0.2s ease;
         }
 
-        /* بالکل واٹس ایپ والا نستعلیق اردو فونٹ */
-        body.lang-ur,
-        body.lang-ur * {
-            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif !important;
-        }
-
+        /* اردو موڈ اسٹائل - آئیکنز کو چھوڑ کر سب پر لاگو ہوگا */
         body.lang-ur {
             direction: rtl;
             text-align: right;
+            font-family: 'Noto Nastaliq Urdu', serif !important;
         }
 
         body.lang-ur h1, 
         body.lang-ur h2, 
-        body.lang-ur h3 {
-            line-height: 2 !important;
-            letter-spacing: 0px !important;
-        }
-
+        body.lang-ur h3, 
         body.lang-ur p, 
         body.lang-ur a, 
         body.lang-ur span, 
         body.lang-ur button,
         body.lang-ur marquee {
-            line-height: 2.3 !important;
-            font-size: 15px;
+            font-family: 'Noto Nastaliq Urdu', serif !important;
+            line-height: 2.2 !important;
+        }
+
+        body.lang-ur .hero h1 {
+            line-height: 1.8 !important;
+        }
+
+        /* آئیکنز کے فونٹ کو برقرار رکھنے کے لیے */
+        body.lang-ur .fa,
+        body.lang-ur .fas,
+        body.lang-ur .fab {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            line-height: 1 !important;
         }
 
         /* Notice Board Ticker */
@@ -397,6 +401,7 @@
             min-height: 280px;
         }
 
+        /* نیا محفوظ واٹس ایپ بٹن (SVG Icon کے ساتھ) */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -409,11 +414,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
             z-index: 1000;
             text-decoration: none;
             transition: 0.3s;
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
         }
 
         .whatsapp-float:hover {
@@ -605,7 +615,7 @@
                 <div class="parent-info" id="rev-1-name">- Muhammad Tariq (Parent)</div>
             </div>
             <div class="testimonial-card">
-                <p id="rev-2-p">"The teachers give individual attention to each child. Best school in Kiamari Town area with affordable fee structure."</p>
+                <p id="rev-2-p">"The teachers give individual attention to each child. Best school in Movach Goth area with affordable fee structure."</p>
                 <div class="parent-info" id="rev-2-name">- Abdul Rasheed (Parent)</div>
             </div>
         </div>
@@ -617,7 +627,7 @@
         <div class="contact-layout">
             <div class="contact-info">
                 <p id="c-address"><strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.</p>
-                <p id="c-phone"><strong>Phone / WhatsApp:</strong> +92 300 0000000</p>
+                <p id="c-phone"><strong>Phone / WhatsApp:</strong> +92 313 2596296</p>
                 <p id="c-email"><strong>Email:</strong> info@saadpublicschool.com</p>
                 <p id="c-hours"><strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)</p>
                 <a href="https://maps.google.com/?q=24.919899,66.942614" target="_blank" class="map-btn" id="btn-map">
@@ -625,15 +635,16 @@
                 </a>
             </div>
             <div class="map-box">
-                <!-- درست لوکیشن میپ -->
                 <iframe src="https://maps.google.com/maps?q=24.919899,66.942614&hl=en&z=17&output=embed" loading="lazy"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/923000000000?text=Hello%20Saad%20Public%20School,%20I%20want%20to%20inquire%20about%20admissions." target="_blank" class="whatsapp-float" title="Chat with Us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <!-- Permanent SVG WhatsApp Floating Button -->
+    <a href="https://wa.me/923132596296?text=Hello%20Saad%20Public%20School,%20I%20want%20to%20inquire%20about%20admissions." target="_blank" class="whatsapp-float" title="Chat with Us on WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.969.541 1.942.825 2.806.825h.005c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.586-5.767-5.773-5.767zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.115-.527-1.708-.707-2.828-2.456-2.913-2.57-.085-.114-.689-.918-.689-1.751 0-.833.435-1.243.59-1.411.155-.168.337-.21.45-.21.112 0 .225.001.323.006.103.005.241-.039.378.291.144.344.489 1.192.531 1.278.043.085.071.185.014.298-.057.113-.086.184-.171.284-.085.1-.179.223-.256.299-.085.085-.174.177-.075.347.099.171.44 1.764 1.341 2.37.388.261.698.344.87.422.172.078.273.067.375-.05.103-.118.44-.513.558-.688.118-.175.236-.146.396-.086s1.025.483 1.202.571c.177.088.295.132.339.206.044.074.044.43-.1 1.835zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.398C8.423 21.503 10.158 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+        </svg>
     </a>
 
     <!-- Footer -->
@@ -690,11 +701,11 @@
                 titleReviews: "What Parents Say",
                 rev1P: "\"Saad Public School provides a very secure and disciplined environment. My children have shown great improvement in studies and behavior.\"",
                 rev1Name: "- Muhammad Tariq (Parent)",
-                rev2P: "\"The teachers give individual attention to each child. Best school in Kiamari Town area with affordable fee structure.\"",
+                rev2P: "\"The teachers give individual attention to each child. Best school in Movach Goth area with affordable fee structure.\"",
                 rev2Name: "- Abdul Rasheed (Parent)",
                 titleContact: "Location & Contact",
                 cAddress: "<strong>Address:</strong> Shaikh Mohllah, Movach Goth No.2, Hub River Road, Kiamari Town, Karachi.",
-                cPhone: "<strong>Phone / WhatsApp:</strong> +92 300 0000000",
+                cPhone: "<strong>Phone / WhatsApp:</strong> +92 313 2596296",
                 cEmail: "<strong>Email:</strong> info@saadpublicschool.com",
                 cHours: "<strong>Visiting Hours:</strong> Monday - Saturday (8:00 AM - 2:00 PM)",
                 btnMap: '<i class="fas fa-map-marked-alt"></i> Open in Google Maps',
@@ -746,11 +757,11 @@
                 titleReviews: "والدین کی رائے",
                 rev1P: "”سعد پبلک اسکول ایک انتہائی محفوظ اور منظم اسکول ہے۔ میرے بچوں کی پڑھائی اور اخلاق میں بہت مثبت تبدیلی آئی ہے۔“",
                 rev1Name: "- محمد طارق (والد)",
-                rev2P: "”اساتذہ ہر بچے پر الگ سے محنت کرتے ہیں۔ کیماڑی ٹاؤن کے علاقے میں مناسب فیس کے ساتھ بہترین اسکول ہے۔“",
+                rev2P: "”اساتذہ ہر بچے پر الگ سے محنت کرتے ہیں۔ مواچھ گوٹھ کے علاقے میں مناسب فیس کے ساتھ بہترین اسکول ہے۔“",
                 rev2Name: "- عبد الرشید (والد)",
                 titleContact: "لوکیشن اور رابطہ",
                 cAddress: "<strong>پتہ:</strong> شیخ محلہ، مواچھ گوٹھ نمبر 2، حب ریور روڈ، کیماڑی ٹاؤن، کراچی۔",
-                cPhone: "<strong>فون / واٹس ایپ:</strong> +92 300 0000000",
+                cPhone: "<strong>فون / واٹس ایپ:</strong> +92 313 2596296",
                 cEmail: "<strong>ای میل:</strong> info@saadpublicschool.com",
                 cHours: "<strong>اوقاتِ ملاقات:</strong> پیر تا ہفتہ (صبح 8:00 بجے تا دوپہر 2:00 بجے)",
                 btnMap: '<i class="fas fa-map-marked-alt"></i> گوگل میپس پر دیکھیں',
